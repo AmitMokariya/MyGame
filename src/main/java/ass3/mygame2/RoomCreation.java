@@ -25,6 +25,8 @@ public class RoomCreation {
         
 
         castle.setExit("east", kitchen);
+        kitchen.setExit("west", castle);
+        
         castle.setExit("south", frontGate);
         frontGate.setExit("north", castle);
 

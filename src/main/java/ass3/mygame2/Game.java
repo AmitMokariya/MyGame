@@ -236,12 +236,12 @@ public class Game {
                 kitchen.setLockedStatus(false);
                 System.out.println("You just unlocked the kitchen.");
             }
-            else if(currentRoom.getName().equals("castle") && currentItem.getName().equals("frontYardKey")){
-                Room frontYard = rooms.getRoom("frontYard"); 
+            else if(currentRoom.getName().equals("castle") && currentItem.getName().equals("frontGateKey")){
+                Room frontYard = rooms.getRoom("frontGate"); 
                 frontYard.setLockedStatus(false);
-                System.out.println("You just unlocked the frontYard.");
+                System.out.println("You just unlocked the frontGate.");
             }
-            else if(currentRoom.getName().equals("frontYard") && currentItem.getName().equals("excaliburSword")){
+            else if(currentRoom.getName().equals("frontGate") && currentItem.getName().equals("excaliburSword")){
                 System.out.println("You just killed the giant ogre. Well done!");
 
                 System.out.println("Thanks for playing.");
