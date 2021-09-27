@@ -26,14 +26,18 @@ public class Game {
 
     private HashMap<Item, Room> roomKey;
 
+
     private int timeCounter; // to count the steps
 
+    private long timeLimit = 50; // time limit of 50 minutes to solve the puzzle
+    private long startTime; // to store the time of start of the game
     /**
      * Create the game and initialise its internal map.
      */
     public Game() {
-        long timeStart = System.currentTimeMillis(); // use the real time
-        timeCounter = 50;
+        startTime = System.currentTimeMillis(); // record the game start time
+        timeCounter = 0;
+        
         parser = new Parser();
         player = new Player();
         rooms = new RoomCreation();
@@ -244,6 +248,9 @@ public class Game {
             else if(currentRoom.getName().equals("frontGate") && currentItem.getName().equals("excaliburSword")){
                 System.out.println("You just killed the giant ogre. Well done!");
 
+                long currentTime = System.currentTimeMillis();
+                double delta = (currentTime - startTime)/60000.0; // get number of minutes elapsed since the game was started
+                System.out.printf("Congratz you have solved the puzzle in %f minutes with just %d steps.\n",delta,timeCounter);
                 System.out.println("Thanks for playing.");
                 System.exit(0);
             }
