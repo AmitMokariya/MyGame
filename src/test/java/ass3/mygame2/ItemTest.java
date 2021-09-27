@@ -20,7 +20,7 @@ public class ItemTest {
         item = new Item("gun","this is a gun", 0);
     }
 
-    /**
+    /** 
      * Test of getName method, of class Item.
      */
     @Test
