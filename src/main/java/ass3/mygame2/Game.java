@@ -122,12 +122,17 @@ public class Game {
      * message and a list of the command words.
      */
     private void printHelp() {
-        System.out.println("");
+        System.out.println();
 
         // implement random Hints -> massive bonus points 
-        System.out.println("you can open the door using the use command");
-
-        System.out.println("you need to clear the ogre before you can open the kitchen door");
+        String hints[] = {
+            "you can open the door using the use command",
+            "you need to clear the ogre to solve the puzzle.",
+            "to kill the ogre you have to use the sword.",
+            "you may need matching key to open locked doors."
+        };
+        
+        System.out.println("Random Hint: " + hints[(int)(Math.random()*hints.length)]);
 
         System.out.println();
         System.out.println("Your command words are:");
