@@ -153,14 +153,15 @@ public class Game {
         if (nextRoom == null) {
             System.out.println("There is no door!");
         } else {
-            if (currentRoom.getLockedStatus() == true) { // the door is locked
+            if (nextRoom.getLockedStatus() == true) { // the door is locked
+                System.out.println(nextRoom.getShortDescription());
                 System.out.println("The door is locked, you need to find a way to open it");
-                System.out.println(currentRoom.getLongDescription());
             } else {
                 currentRoom = nextRoom;
                 System.out.println(currentRoom.getLongDescription());
                 //System.out.println(currentRoom.printAllRoomItems());
                 // increment the timeCounter
+                timeCounter ++;
             }
         }
     }

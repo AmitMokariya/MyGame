@@ -20,7 +20,7 @@ public class RoomCreation {
         Room castle, kitchen, frontGate;
 
         castle = new Room("castle", "You are at the castle", false);
-        kitchen = new Room("kitchen", "The kitchen door has a shape of a heart", false);
+        kitchen = new Room("kitchen", "The kitchen door has a shape of a heart", true);
         frontGate = new Room("frontGate", "There is a giant ogre", true);
         
 
