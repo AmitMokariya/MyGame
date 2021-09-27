@@ -102,7 +102,7 @@ public class Game {
         } else if (commandWord.equals("drop")) {
             dropItem(command);
         } else if (commandWord.equals("use")) {
-            //useItem(command);
+            useItem(command);
         } else if (commandWord.equals("inspect")) {
             //lookItem(command);
         } else if (commandWord.equals("quit")) {
@@ -217,12 +217,12 @@ public class Game {
     {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
-            System.out.println("Take what?");
+            System.out.println("Use what?");
             return;
         }
 
         String itemFromCommand = command.getSecondWord();
-        Item currentItem = currentRoom.getRoomItem(itemFromCommand);
+        Item currentItem = player.getPlayerItem(itemFromCommand);
 
         if (currentItem == null) {
             System.out.println("You can't use nothing, no?");
@@ -230,18 +230,26 @@ public class Game {
             // you want make sure that the currentRoom is the room where you want to open the door (before the nextdoor).
             // you want to make sure the currentItem matches the key to open the next door.
 
-            //if(currentRoom.getName().equals("castle") && currentItem.getName().equals("key")){
-            //.setLockedStatus(false);
-            System.out.println("You just used the " + currentItem.getName());
+            if(currentRoom.getName().equals("castle") && currentItem.getName().equals("key")){
+                Room kitchen = rooms.getRoom("kitchen"); 
+                kitchen.setLockedStatus(false);
+                System.out.println("You just unlocked the kitchen.");
+            }
+            else if(currentRoom.getName().equals("castle") && currentItem.getName().equals("frontYardKey")){
+                Room frontYard = rooms.getRoom("frontYard"); 
+                frontYard.setLockedStatus(false);
+                System.out.println("You just unlocked the frontYard.");
+            }
+            else if(currentRoom.getName().equals("frontYard") && currentItem.getName().equals("excaliburSword")){
+                System.out.println("You just killed the giant ogre. Well done!");
 
-            //if(currentRoom.getName().equals("frontYard") && currentItem.getName().equals("item1")){
-            //frontGate.setLockedStatus(false);
-            // if(currentRoom.getName().equals("castle")){
-            // //currentRoom.checkRoom("castle");
-            // roomKey.get(currentItem).setLockedStatus(false);
-            // }
-            System.out.println("You cannot use this item here");
-
+                System.out.println("Thanks for playing.");
+                System.exit(0);
+            }
+            else
+            {
+                System.out.println("You cannot use this item here");
+            }
         }
 
     }
